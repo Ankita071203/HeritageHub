@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Section</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: black;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgb(250, 7, 181);
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-bottom: 2px solid #ccc;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            gap: 15px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .search input {
+            padding: 5px 10px;
+            border: 1px solid grey;
+            border-radius: 5px;
+        }
+
+        .profile a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px;
+        }
+
+        .friends-list {
+            width: 25%;
+            background-color: grey;
+            padding: 10px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            height: calc(100vh - 60px); /* Adjust height based on header height */
+            position: sticky;
+            top: 60px; /* Height of the header */
+        }
+
+        .friend {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .friend:hover {
+            background-color: #e0e0e0;
+        }
+
+        .friend img {
+            border-radius: 50%;
+            margin-right: 15px;
+            width: 40px;
+            height: 40px;
+        }
+
+        .friend-name {
+            font-weight: bold;
+            color: black;
+        }
+
+        .last-message {
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .feed {
+            width: 70%;
+            margin: 0 10px;
+            padding: 10px;
+            background-color: white;
+            overflow-y: auto;
+            height: calc(100vh - 60px); /* Adjust height based on header height */
+        }
+
+        .post {
+            background-color: lightgrey;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .post:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .post .caption {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .post img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 5px;
+        }
+
+        .post .interactions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .post .interactions span {
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .post .interactions span:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .comments {
+            display: none;
+            padding-top: 10px;
+            border-top: 1px solid #ccc;
+        }
+
+        .profile-details {
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -20%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .profile-picture img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+        }
+
+        .profile-stats {
+            margin: 20px 0;
+        }
+
+        .profile-stats div {
+            margin-bottom: 10px;
+        }
+
+        .edit-profile-picture, .redeem-btn {
+            background-color: pink;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .edit-profile-picture:hover, .redeem-btn:hover {
+            background-color: lightpink;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Create Blog</a></li>
+                <li><a href="#">Play Games</a></li>
+                <li><a href="#">Create Reels</a></li>
+                <li><a href="#">Redeem</a></li>
+                <li><a href="#">Other Option</a></li>
+            </ul>
+        </nav>
+        <div class="search">
+            <input type="text" placeholder="Search...">
+        </div>
+        <div class="profile">
+            <a href="#">View Profile</a>
+        </div>
+    </header>
+    <div class="container">
+        <aside class="friends-list">
+            <div class="friend">
+                <img src="https://via.placeholder.com/50" alt="Friend 1" class="profile-pic">
+                <div>
+                    <div class="friend-name">Alice</div>
+                    <div class="last-message">Hey, how are you?</div>
+                </div>
+            </div>
+            <div class="friend">
+                <img src="https://via.placeholder.com/50" alt="Friend 2" class="profile-pic">
+                <div>
+                    <div class="friend-name">Bob</div>
+                    <div class="last-message">Let's catch up tomorrow.</div>
+                </div>
+            </div>
+            <div class="friend">
+                <img src="https://via.placeholder.com/50" alt="Friend 3" class="profile-pic">
+                <div>
+                    <div class="friend-name">Charlie</div>
+                    <div class="last-message">Are you coming to the party?</div>
+                </div>
+            </div>
+            <div class="friend">
+                <img src="https://via.placeholder.com/50" alt="Friend 4" class="profile-pic">
+                <div>
+                    <div class="friend-name">David</div>
+                    <div class="last-message">Check out this new game!</div>
+                </div>
+            </div>
+            <div class="friend">
+                <img src="https://via.placeholder.com/50" alt="Friend 5" class="profile-pic">
+                <div>
+                    <div class="friend-name">Eve</div>
+                    <div class="last-message">See you soon!</div>
+                </div>
+            </div>
+            <!-- Add more friends as needed -->
+        </aside>
+        <main class="feed">
+            <div class="post">
+                <div class="caption">Caption for post 1</div>
+                <img src="https://via.placeholder.com/600x400" alt="Post Image 1">
+                <div class="interactions">
+                    <span class="like-btn">Like</span>
+                    <span class="comment-btn">Comment</span>
+                    <span>Share</span>
+                </div>
+                <div class="comments hidden">
+                    <div class="comment">Lovely outfit! Where did you get it from?</div>
+                </div>
+            </div>
+            <div class="post">
+                <div class="caption">Caption for post 2</div>
+                <img src="https://via.placeholder.com/600x400" alt="Post Image 2">
+                <div class="interactions">
+                    <span class="like-btn">Like</span>
+                    <span class="comment-btn">Comment</span>
+                    <span>Share</span>
+                </div>
+                <div class="comments hidden">
+                    <div class="comment">Looking great as always!</div>
+                </div>
+            </div>
+            <!-- Add more posts as needed -->
+        </main>
+    </div>
+    <div class="profile-details hidden">
+        <div class="profile-picture">
+            <img src="https://via.placeholder.com/150" alt="Your Profile Picture">
+        </div>
+        <div class="profile-stats">
+            <div>Followers: 100</div>
+            <div>Total Blogs: 20</div>
+            <div>Total Earned Coins: 150</div>
+        </div>
+        <button class="redeem-btn">Redeem</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const commentButtons = document.querySelectorAll('.comment-btn');
+            
+            commentButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const commentsDiv = button.closest('.post').querySelector('.comments');
+                    commentsDiv.classList.toggle('hidden');
+                });
+            });
+
+            const profileLink = document.querySelector('.profile a');
+            const profileDetails = document.querySelector('.profile-details');
+            
+            profileLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                profileDetails.classList.toggle('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

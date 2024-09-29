@@ -1,0 +1,249 @@
+/* body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin-top: 80px; 
+}
+
+.quiz-content {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-content h2 {
+    color: #E91E63; 
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.quiz-question {
+    margin-bottom: 20px;
+}
+
+.quiz-question p {
+    font-size: 1.2em;
+    color: #444;
+}
+
+.quiz-btn {
+    background-color: #E91E63; 
+    color: #fff; /
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: center;
+}
+
+.quiz-btn:hover {
+    background-color: #D81B60; 
+}
+
+.quiz-result {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.5em;
+    color: #444;
+} */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin-top: 80px; /* To offset the fixed header */
+}
+
+.quiz-content {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-content h2 {
+    color: #E91E63; /* Pink color for headings */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.quiz-question {
+    margin-bottom: 20px;
+  
+}
+.quiz-question p{
+    text-align: center;
+}
+.quiz-question input{
+    margin-left: 150px;
+}
+
+.quiz-question p {
+    font-size: 1.2em;
+    color: #444;
+}
+
+.quiz-btn {
+    display: block;
+    background-color: #E91E63; /* Pink color for button */
+    color: #fff; /* White text */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 20px auto; /* Center the button horizontally */
+}
+
+.quiz-btn:hover {
+    background-color: #D81B60; /* Darker pink on hover */
+}
+
+.quiz-result {
+    text-align: center; /* Center text inside the div */
+    margin-top: 100px; /* Add margin from the top */
+    font-size: 1.5em;
+    color: #444;
+}
+
+#result{
+    display: flex;
+    align-items: center;
+}
+
+.Footimg img {
+    width: 100%; /* Makes the image span the full width of the website */
+    display: block; /* Removes any extra space below the image */
+    margin-top: 20px; /* Adjust the top margin as needed */
+}
+footer{
+    margin-top: 15px;
+
+}
+.foot-panel1{
+    background-color: #e6eaef;
+    color: rgb(0, 0, 0);
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.85;
+}
+.foot-panel2{
+    background-color: #fdfeff;
+    color:rgb(0, 0, 0);
+    height:500px;
+    display:flex;
+    justify-content: space-evenly;
+}
+.col2{
+    align-items: center;
+}
+.col2 .img1{
+    height:60px;
+    width: 180px;
+}
+.col2 .img2{
+    height: 60px;
+    width: 180px;
+}
+.col2 .img3{
+    height: 20px;
+    width: 30px;
+    margin-right: 15px;
+}
+.col2 .img4{
+    height: 27px;
+    width: 30px;
+    margin-right: 15px;
+   
+}
+.col2 .img5{
+    height: 27px;
+    width: 30px;
+    margin-right: 15px;
+}
+.col2 .img6{
+    height: 27px;
+    width: 30px;
+    margin-right: 15px;
+}
+.col2 .social{
+    margin-top: 30px;
+}
+.col3{
+    margin-top: 10px;
+    width: 290px;
+}
+.original {
+    display: flex;
+    align-items: center; /* Aligns items vertically centered */
+}
+
+.original img {
+    margin-right: 10px; /* Adjust the spacing between the image and the text */
+}
+
+.Return {
+    display: flex;
+    align-items: center; /* Aligns items vertically centered */
+}
+
+.Return img {
+    margin-right: 10px; /* Adjust the spacing between the image and the text */
+}
+.col3 .img1{
+    height: 50px;
+    width: 50px;
+}
+.col3 .img2{
+    height: 50px;
+    width: 50px;
+}
+ul{
+    margin-top: 20px;
+}
+ul a{
+    display:block;
+    font-size:0.85rem;
+    margin-top: 10px;
+    color:#1e1a1a4f;
+}
+.foot-panel3{
+    background-color: #37475a;
+    color:white;
+    border-top: 0.5 solid white;
+    height:70px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.logo{
+    background-image: url("amazon logo.jpg");
+    background-size: cover;
+    height:50px;
+    width:100px;
+}
+
+.foot-panel4{
+    background-color: #0f1111;
+    color:white;
+    height:80px;
+    font-size: 0.7rem;
+    text-align: center;
+
+}
+.pages{
+    padding-top:25px;
+}
+.copyright{
+    padding-top:5px;
+}
